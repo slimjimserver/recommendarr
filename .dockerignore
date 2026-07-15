@@ -1,0 +1,13 @@
+.git
+.gitignore
+.codex
+.agents
+__pycache__
+*.py[cod]
+*.db
+data/
+config/config.yaml
+kometa/
+logs/
+*.log
+.env

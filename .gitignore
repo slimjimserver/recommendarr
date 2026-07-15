@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.db
+*.log
+.env
+
+# Private runtime configuration and generated data.
+config/config.yaml
+data/
+kometa/
+logs/*
+!logs/.gitkeep

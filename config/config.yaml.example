@@ -1,0 +1,26 @@
+# Copy this file to config.yaml, replace the placeholder values, and keep the
+# resulting config.yaml private. Docker can mount it into the container.
+
+plex:
+  url: "http://your-plex-server:32400"
+  token: "your-plex-token"
+  library: "Movies"
+
+tmdb:
+  # Use one credential type. Most users should use the API v3 key.
+  api_key: "your-tmdb-api-v3-key"
+  # read_access_token: "your-tmdb-api-v4-read-access-token"
+
+recommendations:
+  days_to_look_back: 30
+  top_n: 50
+  # Directory shared with Kometa. This is /exports in the Docker container.
+  export_location: "/exports"
+  # Filename written inside export_location in Kometa's text_file format.
+  export_file: "recommendarr.txt"
+
+database:
+  file: "/data/recommendarr.db"
+
+# Omit this to run once. Examples: "05:00|daily", "05:00|weekly(sunday)".
+schedule: "23:30|daily"

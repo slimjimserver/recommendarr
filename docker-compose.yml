@@ -1,0 +1,22 @@
+services:
+  recommendarr:
+    # Published by GitHub Actions to GHCR; set the full image path in .env.
+    image: "${RECOMMENDARR_IMAGE:?Copy .env.example to .env and set RECOMMENDARR_IMAGE}"
+    pull_policy: always
+    container_name: recommendarr
+    restart: unless-stopped
+    # Run with your host user's IDs so bind-mounted files stay writable.
+    user: "${PUID:-1000}:${PGID:-1000}"
+    environment:
+      TZ: "${TZ:-America/New_York}"
+      PUID: "${PUID:-1000}"
+      PGID: "${PGID:-1000}"
+    volumes:
+      # Application configuration (contains Plex and TMDb credentials).
+      - ./config:/app
+      # Persistent SQLite cache and watch history.
+      - ./data:/data
+      # Shared with Kometa; mount this same host directory into Kometa's config.
+      - ./kometa:/exports
+      # One dated file per run; Recommendarr retains the five newest files.
+      - ./logs:/logs
