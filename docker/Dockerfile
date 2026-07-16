@@ -10,5 +10,8 @@ COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend/recommendarr.py .
+COPY config/config.yaml.example .
+COPY docker/entrypoint.py .
 
+ENTRYPOINT ["python", "entrypoint.py"]
 CMD ["python", "recommendarr.py", "--config", "/app/config.yaml", "--log-dir", "/app/logs", "--run-now"]

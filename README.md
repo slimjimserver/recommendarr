@@ -19,6 +19,9 @@ recommendations to a file that Kometa can use for a collection.
    cp config/config.yaml.example config/config.yaml
    ```
 
+   Alternatively, the container copies the example to `config/config.yaml` on
+   its first start. It will never overwrite an existing configuration file.
+
 2. Edit `config/config.yaml` and replace the Plex and TMDb placeholder values.
    Keep the Docker paths shown below unless you intentionally change the Compose
    mounts:
