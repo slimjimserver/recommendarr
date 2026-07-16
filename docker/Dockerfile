@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY recommendarr.py .
 
-CMD ["python", "recommendarr.py", "--config", "/app/config.yaml", "--log-dir", "/logs", "--run-now"]
+CMD ["python", "recommendarr.py", "--config", "/app/config.yaml", "--log-dir", "/app/logs", "--run-now"]

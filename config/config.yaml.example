@@ -14,13 +14,13 @@ tmdb:
 recommendations:
   days_to_look_back: 30
   top_n: 50
-  # Directory shared with Kometa. This is /exports in the Docker container.
-  export_location: "/exports"
+  # Directory shared with Kometa. This is /app/exports in the Docker container.
+  export_location: "/app/exports"
   # Filename written inside export_location in Kometa's text_file format.
   export_file: "recommendarr.txt"
 
 database:
-  file: "/data/recommendarr.db"
+  file: "/app/data/recommendarr.db"
 
 # Omit this to run once. Examples: "05:00|daily", "05:00|weekly(sunday)".
 schedule: "23:30|daily"
