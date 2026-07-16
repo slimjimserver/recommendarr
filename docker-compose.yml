@@ -7,14 +7,6 @@ services:
     user: "1000:1000"
     environment:
       TZ: "America/New_York"
-      PUID: "1000"
-      PGID: "1000"
     volumes:
-      # Application configuration (contains Plex and TMDb credentials).
+      # Application configuration plus persistent data, exports, and logs.
       - ./config:/app
-      # Persistent SQLite cache and watch history.
-      - ./config/data:/app/data
-      # Shared with Kometa; mount this same host directory into Kometa's config.
-      - ./config/exports:/app/exports
-      # One dated file per run; Recommendarr retains the five newest files.
-      - ./config/logs:/app/logs

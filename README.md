@@ -38,6 +38,9 @@ recommendations to a file that Kometa can use for a collection.
 3. Pull and start the service:
 
    ```sh
+   # Ensure the host user that runs Docker owns the bind-mounted directory.
+   sudo chown -R "$(id -u):$(id -g)" config
+
    docker compose pull
    docker compose up -d
    ```
@@ -76,6 +79,11 @@ Runtime files are kept under `config/`:
 - `config/logs/` — the five newest detailed run logs
 
 These paths, along with `config/config.yaml`, are excluded from Git.
+
+The container runs as UID/GID `1000:1000`. Recommendarr creates missing
+`data`, `exports`, and `logs` directories under `config/`. Do not add separate
+nested bind mounts for them: if a source directory is missing, Docker creates
+it as `root`, preventing Recommendarr from writing to it.
 
 ## Updating settings
 

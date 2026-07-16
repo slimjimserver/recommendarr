@@ -152,6 +152,10 @@ class Schedule:
 
 class Database:
     def __init__(self, filename):
+        # SQLite creates the database file itself, but not its parent
+        # directory.  Create it so a fresh /app bind mount works without
+        # manually creating /app/data first.
+        Path(filename).parent.mkdir(parents=True, exist_ok=True)
         self.conn = sqlite3.connect(filename)
         # WAL allows reads and writes to coexist and the timeout prevents a
         # transient lock (for example, during a backup) from failing a run.
