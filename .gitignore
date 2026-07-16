@@ -7,7 +7,7 @@ __pycache__/
 
 # Private runtime configuration and generated data.
 config/config.yaml
-config/data/
-config/exports/
+config/data/*
+config/exports/*
 config/logs/*
 !config/logs/.gitkeep
