@@ -1,10 +1,13 @@
-name: Build and Publish image to Docker Hub
+name: Build and publish image to Docker Hub
 on:
   push:
     branches:
       - main
     paths:
-      - 'docker/Dockerfile'
+      - 'backend/**'
+      - 'docker/**'
+      - '.dockerignore'
+      - '.github/workflows/publish-image.yml'
   workflow_dispatch:
 
 jobs:
@@ -12,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: build image
         run: |
-          docker build ./docker/ -t slimjimserver/recommendarr:latest
+          docker build --file docker/Dockerfile --tag slimjimserver/recommendarr:latest .
       - name: push image to docker hub
         run: |
           docker login -u slimjimserver -p ${{ secrets.DOCKER_HUB_TOKEN }}
