@@ -1,13 +1,13 @@
 .git
-.gitignore
-.codex
+.github
 .agents
+.codex
 __pycache__
 *.py[cod]
 *.db
-data/
-config/config.yaml
-kometa/
-logs/
 *.log
 .env
+
+# Private configuration and generated runtime data must never enter the build context.
+config/config.yaml
+
